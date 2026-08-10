@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    /* ===== Background ===== */
+    --bg-main: #171717;
+    --bg-section: #222222;
+    --bg-card: #2D2D2B;
+
+    /* ===== Text ===== */
+    --text-main: #F1EBDD;
+    --text-muted: #B9B3A7;
+
+    /* ===== Accent ===== */
+    --accent: #D6C9A8;
+    --accent-hover: #E7DCC3;
+    --accent-red: #9E3D35;
+
+    /* ===== UI ===== */
+    --border: #5E5A52;
+    --shadow: #0B0B0B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-main);
+}
+
+/*Animacion principal de apertura*/
+
+@keyframes lock-reveal {
+    0% {
+        mask-size: 50px;
+    }
+
+    100% {
+        mask-size: 1000vh;
+    }
+}
+
+
