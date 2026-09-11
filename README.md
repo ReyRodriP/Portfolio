@@ -1,7 +1,11 @@
 # Detalles esteticos
 
 1. Hacer un poco de zoom en imagen de proyectos al pasar el mouse.
-2.
+2. Boton para descargar CV en pdf
+3. Seccion de tecnologias y herramientas con sus iconos y nombres
+4. Seccion de proyectos importantes
+-Debe ser tipo carrete de pelicula con opcion para ver la descripcion y tener enlace al github del proyecto
+5. Apartado Sobre mí
 
 # Responder estas preguntas
 
