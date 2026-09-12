@@ -1,20 +1,22 @@
 .start { 
+    position: relative;
     height: 100vh;
     width: 100%;
+
     display: flex;
     flex-direction: column;
-    align-content: center;
-    text-align: center;
+    align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
-#background-mask {
+.background-mask {
     mask-image: url('/img/circle.svg');
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 50px;
     
-    animation: lock-reveal 3s forwards ease-in-out;
+    animation: lock-reveal 4s forwards ease-in-out;
     position: absolute;
     inset: 0;
 }
@@ -23,21 +25,3 @@
     color: var(--text-main);
 }
 
-svg {
-    z-index: 0;
-}
-
-path {
-    fill: transparent;
-}
-
-text {
-    fill: #fff;
-    font-size: 2.4em;
-    font-weight: bold;
-}
-
-h1 {
-    z-index: 5;
-    color: #fff;
-}
