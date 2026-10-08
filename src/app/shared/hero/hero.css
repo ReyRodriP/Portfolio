@@ -1,0 +1,245 @@
+/* 
+| Papel principal  | Crema envejecido | `#E4D8BC` |
+| Papel claro      | Marfil           | `#F1E8D4` |
+| Papel oscuro     | Beige            | `#C8B99A` |
+| Texto principal  | Azul tinta       | `#182D43` |
+| Texto secundario | Gris azulado     | `#4A5154` |
+| Borde exterior   | Gris verdoso     | `#58635C` |
+| Borde interior   | Azul grisáceo    | `#526477` |
+| Rojo             | Rojo retro       | `#B83B32` |
+| Amarillo         | Amarillo mostaza | `#D09A2D` |
+| Verde            | Verde apagado    | `#63745D` | */
+
+.info-container {
+    box-sizing: border-box;
+    width: min(650px, calc(100vw - 30px));
+    padding: 12px;
+
+    background-color: var(--main-paper);
+    color: var(--text);
+
+    transform: rotate(-2deg);
+    box-shadow: 8px 8px 0 #0A0A0A;
+}
+
+.info-border {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 3px solid var(--ext-border);
+}
+
+.second-info-border{
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+    padding: clamp(18px, 2vw, 30px);
+    gap: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 6px solid var(--sec-ext-border);
+}
+
+.img-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-frame {
+    width: clamp(120px, 12vw, 180px);
+    aspect-ratio: 1;
+
+    padding: 5px;
+
+    border: 2px solid var(--ext-border);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 3px var(--main-paper),
+        0 0 0 5px var(--sec-ext-border);
+
+    overflow: hidden;
+}
+
+.img-profile img {display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.name-profile {
+    text-align: center;
+    max-width: 100%;
+}
+
+.name-profile h2 {
+    margin: 0;
+
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+
+    line-height: 1.1;
+
+    color: var(--text);
+}
+
+.name-profile h3 {
+    margin: 8px 0 0;
+
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+
+    font-weight: normal;
+    text-transform: uppercase;
+
+    color: var(--sec-ext-border);
+}
+
+.skills {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 14px;
+
+    text-align: center;
+}
+
+.skills::before {
+    content: "✦";
+
+    color: var(--retro-red);
+
+    font-size: 1rem;
+}
+
+.skill-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.skill-group p {
+    width: 100%;
+
+    margin: 0;
+
+    font-weight: bold;
+    text-transform: uppercase;
+
+    color: var(--text);
+}
+
+.skill-group span {
+    padding: 3px 8px;
+
+    font-size: 0.9rem;
+
+    color: var(--sec-ext-border);
+
+    border-bottom: 1px solid var(--ext-border);
+}
+
+/*Opciones de la carta de presentacion*/
+
+.options {
+    width: min(100%, 280px);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 4px;
+}
+
+.options button {
+    position: relative;
+
+    width: 100%;
+
+    padding: 6px 10px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.options button::before {
+    content: "►";
+
+    position: absolute;
+
+    left: 10px;
+
+    opacity: 0;
+
+    transform: translateX(-5px);
+
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+
+.options button:hover,
+.options button:focus-visible {
+    color: var(--retro-red);
+}
+
+.options button:hover::before,
+.options button:focus-visible::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.under-card {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.65rem;
+    text-transform: uppercase;
+}
+
+.under-card p {
+    margin: 0;
+}
+
+
+/*Version mobile*/
+
+@media (max-width: 450px) {
+    .under-card {
+        flex-direction: column;
+        justify-content: center;
+
+        text-align: center;
+    }
+}

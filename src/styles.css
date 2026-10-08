@@ -18,6 +18,19 @@
     /* ===== UI ===== */
     --border: #5E5A52;
     --shadow: #0B0B0B;
+
+    /* ===== HERO-CARD ===== */
+    --main-paper: #E4D8BC;
+    --light-paper: #F1E8D4;
+    --dark-paper: #C8B99A;
+    --text: #182D43;
+    --second-text: #4A5154;
+    --ext-border: #58635C;
+    --sec-ext-border: #526477;
+
+    --retro-red: #B83B32;
+    --retro-yellow: #D09A2D;
+    --retro-green: #63745D;
 }
 
 * {

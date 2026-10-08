@@ -1,10 +1,11 @@
 import { Component, HostListener } from '@angular/core';
 import { Intro } from '../../shared/intro/intro';
+import { Hero } from '../../shared/hero/hero';
 
 
 @Component({
   selector: 'app-home',
-  imports: [Intro],
+  imports: [/*Intro,*/ Hero],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
