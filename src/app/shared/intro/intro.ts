@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-intro',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './intro.css',
 })
 export class Intro {
+  readonly salir = output<void>();
 
+  irAlPortafolio() {
+    this.salir.emit();
+  }
 }

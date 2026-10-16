@@ -1,5 +1,17 @@
+<div class="film-overlay"></div> <!--Van fuera para evitar que esten arriba y se pueda interactuar con los demas elementos-->
+<div class="vignette"></div>
+
+@if (introVisible()) {
+    <app-intro (salir)="iniciarTransicion()" />
+}
+
+<div class="iris"
+     [class.cerrando]="irisFase() === 'cerrando'"
+     [class.abriendo]="irisFase() === 'abriendo'"
+     (animationend)="onIrisFin()"></div>
+
 <div class="view-container">
-    <!-- <div class="overlay"> -->
         <router-outlet />
-    <!-- </div> -->
 </div>
+
+

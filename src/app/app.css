@@ -1,29 +1,22 @@
 .view-container {
 	position: relative;
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	overflow: hidden;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	filter: sepia(0.5);
-	box-shadow: 0 0 150px black inset;
+
 }
 
 /* Capa que contiene todos los efectos de película */
-.overlay {
-    width: 100%;
-	height: 100%;
+.film-overlay {
 	filter: blur(0.5px) drop-shadow(0 0 0 #c9c7c7);
-
-    /* position: absolute;
+	z-index: 50;
+    position: fixed;
     inset: 0;
-    z-index: 10;
-    pointer-events: none; */
+    pointer-events: none;
 }
 
 /* Rayas verticales (rayaduras de proyector) */
-.overlay::before {
+.film-overlay::before {
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -72,7 +65,7 @@
 }
 
 /* Grano de película (ruido SVG, se ve mucho mejor que conic-gradient) */
-.overlay::after {
+.film-overlay::after {
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -117,18 +110,6 @@
 	}
 }
 
-/* Viñeta */
-.view-container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 5;
-    background: radial-gradient(ellipse at center,
-        transparent 55%,
-        rgba(0, 0, 0, 0.55) 100%);
-}
-
 /* Parpadeo de proyector */
 @keyframes flicker {
     0%, 100% { opacity: 1; }
@@ -140,4 +121,64 @@
     73% { opacity: 1; }
     89% { opacity: 0.98; }
     91% { opacity: 1; }
+}
+
+/*Capa superior*/
+.vignette {
+	background: radial-gradient(ellipse at center,
+        transparent 55%,
+        rgba(0, 0, 0, 0.55) 100%);
+	position: fixed;
+	z-index: 60;
+	inset: 0;
+	pointer-events: none;
+}
+
+/* Transición tipo "iris" (Cuphead): el círculo se cierra y se vuelve a abrir */
+@property --iris-hole {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 200vmax;
+}
+
+.iris {
+	position: fixed;
+	inset: 0;
+	z-index: 45;
+	pointer-events: none;
+	background-color: #000;
+	--iris-hole: 200vmax;
+	mask-image: radial-gradient(circle at 50% 50%,
+		transparent 0,
+		transparent var(--iris-hole),
+		#000 calc(var(--iris-hole) + 1px));
+	-webkit-mask-image: radial-gradient(circle at 50% 50%,
+		transparent 0,
+		transparent var(--iris-hole),
+		#000 calc(var(--iris-hole) + 1px));
+}
+
+.iris.cerrando {
+	animation: iris-cerrar 0.8s ease-in forwards;
+}
+
+.iris.abriendo {
+	animation: iris-abrir 0.9s ease-out forwards;
+}
+
+@keyframes iris-cerrar {
+	from { --iris-hole: 200vmax; }
+	to   { --iris-hole: 0px; }
+}
+
+@keyframes iris-abrir {
+	from { --iris-hole: 0px; }
+	to   { --iris-hole: 200vmax; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.iris.cerrando,
+	.iris.abriendo {
+		animation-duration: 0.01s;
+	}
 }

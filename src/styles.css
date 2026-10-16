@@ -47,6 +47,27 @@ body {
     background-color: var(--bg-main);
 }
 
+/*Estilos generales para los componentes*/
+.page-section {
+    min-height: 100vh;
+    min-height: 100svh;
+    box-sizing: border-box;
+    padding: 4rem 2rem;
+    filter: sepia(.2);
+}
+
+/*Hero section*/
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/*About section*/
+
+
 /*Animacion principal de apertura*/
 
 @keyframes lock-reveal {
