@@ -6,6 +6,7 @@
 4. Seccion de proyectos importantes
 -Debe ser tipo carrete de pelicula con opcion para ver la descripcion y tener enlace al github del proyecto
 5. Apartado Sobre mí
+6. Agregar opcion de ver blanco y negro o normal
 
 # Responder estas preguntas
 
