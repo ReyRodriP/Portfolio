@@ -1,0 +1,161 @@
+.projects-section {
+    position: relative;
+    min-height: 100svh;
+    padding: 4rem 2rem;
+    background: var(--bg-main);
+    border: 8px solid var(--text-main);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Perforaciones laterales*/
+.projects-section::before,
+.projects-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: repeating-radial-gradient(
+        circle at center,
+        var(--bg-main) 0 6px,
+        var(--text-main) 6px 12px
+    );
+    background-size: 100% 24px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.projects-section::before { left: 0; }
+.projects-section::after { right: 0; transform: scaleX(-1); }
+
+.carousel {
+    border: 1px solid var(--text-main);
+    width: 90%;
+    margin: 100px auto;
+    display: flex;
+    overflow-x: auto; 
+    rotate: 3deg;
+    filter: sepia(0.35) contrast(1.15) brightness(0.95);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    position: relative;
+    z-index: 5;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.group {
+    display: flex;
+    gap: 1em;
+    animation: spin 5s infinite linear;
+    padding-right: 1em;
+
+}
+
+.card {
+    flex: 0 0 5em;
+    width: 200px;
+    height: 200px;
+    background-color: var(--main-paper);
+    color: #111;
+    font-size: 3rem;
+    border: 5px solid var(--bg-main);
+    box-shadow: 10px 10px 0 #000;
+    border-radius: 16px;
+    scroll-snap-align: start;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/*Cambio de rotacion*/
+.card:nth-child(odd) { transform: rotate(-1.5deg); }
+.card:nth-child(even) { transform: rotate(1.5deg); }
+
+.card:hover {
+    transform: var(--card-hover-rotate, rotate(0deg)) scale(1.03);
+    z-index: 2;
+    box-shadow: 14px 14px 0 var(--bg-main);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:nth-child(odd):hover { --card-hover-rotate: rotate(-2deg); }
+.card:nth-child(even):hover { --card-hover-rotate: rotate(2deg); }
+
+/* Número de escena (claqueta) */
+.card::before {
+    content: attr(data-scene);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #000;
+    background: #fff;
+    padding: 2px 8px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    z-index: 5;
+}
+
+/* Imagen del proyecto dentro de la card */
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.1);
+    border: 3px solid #000;
+    border-radius: 10px;
+    background: #fff;
+}
+
+/* Botones de repositorio / ver en línea */
+.card-actions {
+    margin-top: auto;
+    padding: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.card-actions a,
+.card-actions button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #000;
+    background: #fff;
+    color: #000;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #000;
+    transition: transform 0.1s ease;
+}
+
+.card-actions a:hover,
+.card-actions button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #000;
+}
+
+.card-actions a:active,
+.card-actions button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+/*Animacion de carrusel*/
+@keyframes spin {
+    from {translate: 0;}
+    to {translate: -100%;}
+}
