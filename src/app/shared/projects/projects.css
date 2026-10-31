@@ -1,7 +1,9 @@
+/*Seccion general*/
 .projects-section {
     position: relative;
     min-height: 100svh;
     padding: 4rem 2rem;
+    gap: 4rem;
     background: var(--bg-main);
     border: 8px solid var(--text-main);
     overflow: hidden;
@@ -10,152 +12,237 @@
     align-items: center;
 }
 
-/*Perforaciones laterales*/
-.projects-section::before,
-.projects-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    background: repeating-radial-gradient(
-        circle at center,
-        var(--bg-main) 0 6px,
-        var(--text-main) 6px 12px
-    );
-    background-size: 100% 24px;
-    pointer-events: none;
-    z-index: 10;
+/*Titulo de cada carrete*/
+.reel-title {
+    margin: 2.2rem 0 1.5rem 1.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-main);
+    text-shadow: 4px 4px 0 var(--bg-main);
+    letter-spacing: 2px;
 }
 
-.projects-section::before { left: 0; }
-.projects-section::after { right: 0; transform: scaleX(-1); }
-
-.carousel {
-    border: 1px solid var(--text-main);
-    width: 90%;
-    margin: 100px auto;
+/*Marco de cada carrete*/
+.film-reel {
+    position: relative;
+    width: min(1200px, 95vw);
+    background: var(--text-main);
+    border: 8px solid var(--bg-main);
+    box-shadow: 12px 12px 0 var(--bg-main);
+    border-radius: 0;
+    overflow: hidden;
     display: flex;
-    overflow-x: auto; 
-    rotate: 3deg;
-    filter: sepia(0.35) contrast(1.15) brightness(0.95);
+    flex-direction: column;
+}
+
+/*Perforaciones arriba y abajo*/
+.perforaciones {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: var(--bg-main);
+    pointer-events: none;
+    z-index: 5;
+    /*Circulos blancos en linea horizontal*/
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--text-main) 0 12px,
+        var(--bg-main) 12px 24px
+    );
+    background-size: 24px 100%;
+    
+}
+
+.perforaciones.top {
+    top: 0;
+    animation: spin 3s linear infinite;
+}
+
+.perforaciones.bottom {
+    bottom: 0;
+    transform: scaleY(-1) /*Lo invertimos*/;
+    animation: spin 3s linear infinite;
+}
+
+/*Viewport del carrusel*/
+.reel-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    position: relative;
-    z-index: 5;
+    padding: 1rem 1rem;
+    margin: 0 0 2rem 0;
 }
 
-.carousel::-webkit-scrollbar {
+.reel-viewport::-webkit-scrollbar {
     display: none;
 }
 
-.group {
+/*Fila de las tarjetas*/
+.reel-track {
     display: flex;
-    gap: 1em;
-    animation: spin 5s infinite linear;
-    padding-right: 1em;
-
+    gap: 2rem;
+    padding: 0 1rem 1rem;
 }
 
-.card {
-    flex: 0 0 5em;
-    width: 200px;
-    height: 200px;
-    background-color: var(--main-paper);
-    color: #111;
-    font-size: 3rem;
+/*Tarjetas*/
+.project-card {
+    position: relative;
+    flex: 0 0 auto;
+    width: 360px;
+    background-color: var(--text-main);
     border: 5px solid var(--bg-main);
-    box-shadow: 10px 10px 0 #000;
+    box-shadow: 10px 10px 0 var(--bg-main);
     border-radius: 16px;
     scroll-snap-align: start;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
 }
 
-/*Cambio de rotacion*/
-.card:nth-child(odd) { transform: rotate(-1.5deg); }
-.card:nth-child(even) { transform: rotate(1.5deg); }
+/*Cambio de rotacion por tarjeta*/
+.project-card:nth-child(odd) { transform: rotate(-1.5deg); }
+.project-card:nth-child(even) { transform: rotate(1.5deg); }
 
-.card:hover {
-    transform: var(--card-hover-rotate, rotate(0deg)) scale(1.03);
+.project-card:hover {
+    transform: var(--card-hover-rotate, rotate(0deg)) scale(1.02);
     z-index: 2;
     box-shadow: 14px 14px 0 var(--bg-main);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.card:nth-child(odd):hover { --card-hover-rotate: rotate(-2deg); }
-.card:nth-child(even):hover { --card-hover-rotate: rotate(2deg); }
+.project-card:nth-child(odd):hover { --card-hover-rotate: rotate(-2deg); }
+.project-card:nth-child(even):hover { --card-hover-rotate: rotate(2deg); }
 
-/* Número de escena (claqueta) */
-.card::before {
+/*Numero de escena*/
+.project-card::before {
     content: attr(data-scene);
     position: absolute;
     top: 10px;
     left: 10px;
     font-size: 0.8rem;
     font-weight: 900;
-    color: #000;
-    background: #fff;
+    color: var(--bg-main);
+    background: var(--text-main);
     padding: 2px 8px;
-    border: 2px solid #000;
+    border: 2px solid var(--bg-main);
     border-radius: 6px;
     z-index: 5;
 }
 
-/* Imagen del proyecto dentro de la card */
-.card img {
+/*Imagenes*/
+.card-image {
     width: 100%;
-    height: 140px;
-    object-fit: cover;
-    filter: grayscale(1) contrast(1.1);
-    border: 3px solid #000;
-    border-radius: 10px;
-    background: #fff;
+    height: 190px;
+    overflow: hidden;
+    border-bottom: 3px solid var(--bg-main);
+    background: var(--bg-main);
 }
 
-/* Botones de repositorio / ver en línea */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.1); 
+    display: block;
+}
+
+/*Contenido*/
+.card-body {
+    padding: 1rem 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-body h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1.2;
+}
+
+.card-body p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--bg-card);
+    line-height: 1.4;
+}
+
+/*Botones*/
 .card-actions {
-    margin-top: auto;
-    padding: 1rem;
     display: flex;
     gap: 0.75rem;
-    width: 100%;
+    padding: 1rem 1.25rem;
+    border-top: 3px solid var(--bg-main);
 }
 
-.card-actions a,
-.card-actions button {
+.card-actions .btn {
     flex: 1;
-    padding: 0.75rem 1rem;
-    border: 2px solid #000;
-    background: #fff;
-    color: #000;
+    padding: 0.6rem 1rem;
+    border: 2px solid var(--bg-main);
+    background: var(--text-main);
+    color: var(--bg-main);
     font-weight: 800;
     text-transform: uppercase;
     text-align: center;
     text-decoration: none;
+    font-size: 0.85rem;
     cursor: pointer;
     box-shadow: 4px 4px 0 #000;
     transition: transform 0.1s ease;
 }
 
-.card-actions a:hover,
-.card-actions button:hover {
+.card-actions .btn:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 #000;
+    box-shadow: 6px 6px 0 var(--bg-main);
 }
 
-.card-actions a:active,
-.card-actions button:active {
+.card-actions .btn:active {
     transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 #000;
+    box-shadow: 2px 2px 0 var(--bg-main);
 }
+
+.card-actions .btn-repo { border-color: var(--bg-main); }
+.card-actions .btn-demo { border-color: var(--bg-main); }
 
 /*Animacion de carrusel*/
 @keyframes spin {
     from {translate: 0;}
     to {translate: -100%;}
 }
+
+@keyframes reverseSpin {
+    from {translate: 0;}
+    to {translate: 100%;}
+}
+
+/*Responsive*/
+
+@media (max-width: 768px) {
+    .film-reel {
+        border-width: 4px;
+        box-shadow: 8px 8px 0 var(--bg-main);
+        width: 100%;
+    }
+
+    .perforaciones {
+        height: 24px;
+    }
+
+    .project-card {
+        width: 220px;
+    }
+
+    .project-section {
+        padding: 2rem 1rem;
+        gap: 2.5rem;
+    }
+    
+}
+
