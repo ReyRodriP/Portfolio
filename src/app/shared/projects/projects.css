@@ -14,7 +14,7 @@
 
 /*Titulo de cada carrete*/
 .reel-title {
-    margin: 2.2rem 0 1.5rem 1.5rem;
+    margin: 3rem 0 0 1.5rem;
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 900;
     text-transform: uppercase;
@@ -28,12 +28,27 @@
     position: relative;
     width: min(1200px, 95vw);
     background: var(--text-main);
-    border: 8px solid var(--bg-main);
-    box-shadow: 12px 12px 0 var(--bg-main);
+    border: 10px solid var(--bg-main);
+    box-shadow: 
+        14px 14px 0 var(--bg-main),
+        inset 4px 4px 0 rgba(0, 0, 0, 0.2);
     border-radius: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transform: rotate(2deg);
+}
+
+.film-reel:last-child {
+    transform: rotate(-1deg);
+}
+
+.film-reel:last-child .reel-track {
+    animation: spin 30s linear infinite;
+    width: max-content;
+    display: flex;
+    gap: 2rem;
+    padding: 0 1rem;
 }
 
 /*Perforaciones arriba y abajo*/
@@ -41,29 +56,23 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 40px;
-    background-color: var(--bg-main);
+    height: 44px;
+    background: var(--bg-main);
     pointer-events: none;
     z-index: 5;
-    /*Circulos blancos en linea horizontal*/
-    background-image: repeating-linear-gradient(
-        90deg,
-        var(--text-main) 0 12px,
-        var(--bg-main) 12px 24px
-    );
-    background-size: 24px 100%;
-    
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='2' width='16' height='16' rx='4' fill='%23dcdcdc'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: 24px 24px;
 }
 
 .perforaciones.top {
     top: 0;
-    animation: spin 3s linear infinite;
 }
 
 .perforaciones.bottom {
     bottom: 0;
-    transform: scaleY(-1) /*Lo invertimos*/;
-    animation: spin 3s linear infinite;
+    transform: scaleY(-1);
 }
 
 /*Viewport del carrusel*/
@@ -73,7 +82,7 @@
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     padding: 1rem 1rem;
-    margin: 0 0 2rem 0;
+    margin: 0 0 3rem 0;
 }
 
 .reel-viewport::-webkit-scrollbar {
@@ -85,6 +94,11 @@
     display: flex;
     gap: 2rem;
     padding: 0 1rem 1rem;
+    width: max-content;
+}
+
+.reel-track:nth-of-type(2) {
+    animation: spin 25s linear infinite;
 }
 
 /*Tarjetas*/
@@ -214,12 +228,7 @@
 /*Animacion de carrusel*/
 @keyframes spin {
     from {translate: 0;}
-    to {translate: -100%;}
-}
-
-@keyframes reverseSpin {
-    from {translate: 0;}
-    to {translate: 100%;}
+    to {translate: -50%;}
 }
 
 /*Responsive*/
