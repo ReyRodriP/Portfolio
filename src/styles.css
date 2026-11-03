@@ -31,7 +31,17 @@
     --retro-red: #B83B32;
     --retro-yellow: #D09A2D;
     --retro-green: #63745D;
+
+    /* ===== Typography ===== */
+    --font-display: Georgia, 'Times New Roman', serif;
+    --font-body: Arial, Helvetica, sans-serif;
+
+    /* ===== Visual effects ===== */
+    --image-grayscale: 1;
+    --image-contrast: 1.1;
+    --section-sepia: 0.2;
 }
+
 
 * {
     margin: 0;
@@ -45,6 +55,18 @@ html, body {
 
 body {
     background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+}
+
+button, input, textarea, select {
+    font: inherit;
 }
 
 /*Estilos generales para los componentes*/
@@ -53,7 +75,7 @@ body {
     min-height: 100svh;
     box-sizing: border-box;
     padding: 4rem 2rem;
-    filter: sepia(.2);
+    filter: sepia(var(--section-sepia));
 }
 
 /*Hero section*/

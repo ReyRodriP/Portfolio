@@ -12,7 +12,7 @@
 
 .info-container {
     box-sizing: border-box;
-    width: min(650px, calc(100vw - 30px));
+    width: min(650px, 100%);
     padding: 12px;
 
     background-color: var(--main-paper);
@@ -222,7 +222,7 @@
 
     gap: 10px;
 
-    color: var(--text-secondary);
+    color: var(--second-text);
 
     font-size: 0.65rem;
     text-transform: uppercase;
@@ -236,10 +236,14 @@
 /*Version mobile*/
 
 @media (max-width: 450px) {
+    
+    .info-container {
+        transform: none;
+    }
+
     .under-card {
         flex-direction: column;
         justify-content: center;
-
         text-align: center;
     }
 }

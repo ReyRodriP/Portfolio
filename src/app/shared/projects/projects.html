@@ -4,11 +4,39 @@
     <!-- Carrete 1: Proyectos importante (3) -->
     
     <div class="film-reel">
-        <h2 class="reel-title">Proyecto Destacados</h2>
+        <h2 class="reel-title">Proyectos destacados</h2>
 
         <div class="perforaciones top" aria-hidden="true"></div>
 
-        <div class="reel-viewport">
+        <div class="reel-controls" role="group" aria-label="Navegar proyectos destacados">
+            <button
+                type="button"
+                class="reel-button"
+                aria-label="Desplazar proyectos destacados hacia atrás"
+                aria-controls="featured-projects"
+                (click)="scrollReel(featuredViewport, -1)">
+                <span aria-hidden="true">◀</span>
+            </button>
+
+            <span class="reel-hint">Explora el carrete</span>
+
+            <button
+                type="button"
+                class="reel-button"
+                aria-label="Desplazar proyectos destacados hacia delante"
+                aria-controls="featured-projects"
+                (click)="scrollReel(featuredViewport, 1)">
+                <span aria-hidden="true">▶</span>
+            </button>
+        </div>
+
+        <div
+            #featuredViewport
+            id="featured-projects"
+            class="reel-viewport"
+            role="region"
+            aria-label="Proyectos destacados"
+            tabindex="0">
             <div class="reel-track">
 
                 <article class="project-card" data-scene="01">
@@ -67,11 +95,39 @@
 
     <!-- Carrete 2: Proyectos basicos -->
     <div class="film-reel">
-        <h2 class="reel-title">Proyecto Básicos</h2>
+        <h2 class="reel-title">Proyectos de práctica</h2>
 
         <div class="perforaciones top" aria-hidden="true"></div>
 
-        <div class="reel-viewport">
+        <div class="reel-controls" role="group" aria-label="Navegar proyectos de práctica">
+            <button
+                type="button"
+                class="reel-button"
+                aria-label="Desplazar proyectos de práctica hacia atrás"
+                aria-controls="practice-projects"
+                (click)="scrollReel(practiceViewport, -1)">
+                <span aria-hidden="true">◀</span>
+            </button>
+
+            <span class="reel-hint">Explora el carrete</span>
+
+            <button
+                type="button"
+                class="reel-button"
+                aria-label="Desplazar proyectos de práctica hacia delante"
+                aria-controls="practice-projects"
+                (click)="scrollReel(practiceViewport, 1)">
+                <span aria-hidden="true">▶</span>
+            </button>
+        </div>
+
+        <div
+            #practiceViewport
+            id="practice-projects"
+            class="reel-viewport"
+            role="region"
+            aria-label="Proyectos de práctica"
+            tabindex="0">
             <div class="reel-track">
 
                 <article class="project-card" data-scene="01">

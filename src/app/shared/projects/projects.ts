@@ -73,4 +73,19 @@ export class Projects {
   closeProject(): void {
     this.selectedProject = null;
   }
+
+  scrollReel(viewport: HTMLElement, direction: -1 | 1): void {
+    const card = viewport.querySelector<HTMLElement>('.project-card');
+    const track = viewport.querySelector<HTMLElement>('.reel-track');
+
+    if (!card || !track) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    viewport.scrollBy({
+      left: (card.offsetWidth + gap) * direction,
+      behavior: reducedMotion ? 'auto' : 'smooth',
+    });
+  }
 }
