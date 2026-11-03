@@ -23,7 +23,7 @@
 
                     <div class="card-actions">
                         <a href="#" class="btn btn-repo">Repositorio</a>
-                        <a href="#" class="btn btn-demo">Detalles</a>
+                        <button type="button" class="btn btn-demo" aria-haspopup="dialog" (click)="openProject(projectGalleries[0])">Detalles</button>
                     </div>
                 </article>
 
@@ -39,7 +39,7 @@
 
                     <div class="card-actions">
                         <a href="#" class="btn btn-repo">Repositorio</a>
-                        <a href="#" class="btn btn-demo">Detalles</a>
+                        <button type="button" class="btn btn-demo" aria-haspopup="dialog" (click)="openProject(projectGalleries[1])">Detalles</button>
                     </div>
                 </article>
 
@@ -55,7 +55,7 @@
 
                     <div class="card-actions">
                         <a href="#" class="btn btn-repo">Repositorio</a>
-                        <a href="#" class="btn btn-demo">Detalles</a>
+                        <button type="button" class="btn btn-demo" aria-haspopup="dialog" (click)="openProject(projectGalleries[2])">Detalles</button>
                     </div>
                 </article>
 
@@ -193,3 +193,10 @@
     </div>
 
 </section>
+
+@if (selectedProject; as project) {
+  <app-modal
+    [project]="project"
+    (closed)="closeProject()"
+  />
+}

@@ -1,0 +1,80 @@
+<dialog
+    #dialog
+    class="project-dialog"
+    aria-labelledby="project-modal-title"
+    aria-describedby="project-modal-description"
+    (cancel)="onCancel($event)"
+    (click)="onBackdropClick($event)"
+    (keydown.arrowleft)="changeImage(-1, $event)"
+    (keydown.arrowright)="changeImage(1, $event)">
+
+    <article class="project-sheet">
+        <header class="sheet-header">
+            <div>
+                <p class="sheet-eyebrow">Archivo de proyectos</p>
+                <h2 id="project-modal-title">{{ project().title }}</h2>
+            </div>
+
+            <button 
+                type="button"
+                class="close-button"
+                aria-label="Cerrar detalles del proyecto"
+                autofocus
+                (click)="closeModal()">
+                
+                <span aria-hidden="true">x</span>
+            </button>
+        </header>
+
+        <div class="gallery">
+            @if (currentImage(); as image) {
+                <div class="gallery-stage">
+                    @if (project().images.length > 1) {
+                        <button
+                            type="button"
+                            class="gallery-arrow previous"
+                            aria-label="Ver captura anterior"
+                            (click)="changeImage(-1)">
+                            <span aria-hidden="true"><i class="bx bx-chevron-left"></i></span>
+                        </button>
+                    }
+
+                    <figure class="gallery-image">
+                        <img [src]="image.src" [alt]="image.alt" />
+                    </figure>
+
+                    @if (project().images.length > 1) {
+                        <button
+                            type="button"
+                            class="gallery-arrow next"
+                            aria-label="Ver captura siguiente"
+                            (click)="changeImage(1)">
+
+                            <span aria-hidden="true"><i class="bx bx-chevron-right"></i></span>
+                        </button>
+                    }
+                </div>
+
+                <p class="gallery-counter" role="status" aria-atomic="true">
+                    Captura {{ imageIndex() + 1 }} de {{ project().images.length }}
+                </p>
+            } @else {
+                <p class="empty-gallery">
+                    Este proyecto todavia no tiene capturas.
+                </p>
+            }
+        </div>
+        <footer class="sheet-footer">
+            <p id="project-modal-description">
+                {{ project().description }}
+            </p>
+
+            <button 
+                type="button"
+                class="return-button"
+                (click)="closeModal()">
+            Regresar
+            </button>
+        </footer>
+    </article>
+</dialog>

@@ -1,0 +1,241 @@
+:host {
+    color: var(--text);
+}
+
+.project-dialog {
+    width: min(1050px, calc(100% - 2rem));
+    max-height: calc(100dvh - 2rem);
+    margin: auto;
+    padding: 10px;
+    overflow: auto;
+
+    color: var(--text);
+    background-color: var(--main-paper);
+    border: 3px solid var(--ext-border);
+
+    box-shadow: 
+        0 0 0 3px var(--main-paper),
+        12px 12px 0 rgb(0 0 0 / 35%)
+}
+
+.project-dialog::backdrop {
+    background: rgb(10 10 10 / 78%);
+}
+
+.project-dialog[open] {
+    animation: sheet-enter 180ms ease-in-out;
+}
+
+.project-sheet {
+    border: 5px double var(--sec-ext-border);
+    background-color: var(--light-paper);
+}
+
+.sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+
+    color: var(--light-paper);
+    background: var(--accent-red);
+    border-bottom: 3px solid var(--text-main);
+}
+
+.sheet-eyebrow {
+    margin-bottom: 0.35rem;
+    font: 700 0.75rem/1.4 Arial, sans-serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.sheet-header h2 {
+    font: 900 clamp(1.35rem, 3vw, 2.2rem)/1.1 Georgia, serif;
+    overflow-wrap: anywhere;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+.close-button,
+.gallery-arrow {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    color: var(--text);
+    background: var(--main-paper);
+    border: 2px solid var(--text-main);
+    border-radius: 50%;
+    box-shadow: 3px 3px 0 var(--text-main);
+}
+
+.close-button {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.gallery {
+    padding: 1.25rem;
+    background: 
+        radial-gradient(
+            ellipse at center,
+            var(--light-paper),
+            var(--dark-paper)
+        );
+}
+
+.gallery-stage {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gallery-image {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  overflow: hidden;
+
+  background: var(--bg-main);
+  border: 3px solid var(--text);
+  box-shadow: 4px 4px 0 rgb(24 45 67 / 25%);
+}
+
+.gallery-image img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 47dvh, 520px);
+  object-fit: contain;
+}
+
+.previous {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.next {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.gallery-counter {
+  margin-top: 1rem;
+  color: var(--text);
+  font: 700 0.8rem/1.4 Arial, sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sheet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+
+  background: var(--light-paper);
+  border-top: 3px solid var(--text);
+}
+
+.sheet-footer p {
+  max-width: 65ch;
+  font: 0.95rem/1.5 Arial, sans-serif;
+}
+
+.return-button {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+
+  color: var(--text);
+  background: var(--main-paper);
+  border: 2px solid var(--text);
+  box-shadow: 3px 3px 0 var(--text);
+
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+button:hover {
+  color: var(--light-paper);
+  background: var(--accent-red);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 4px;
+}
+
+.empty-gallery {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+@keyframes sheet-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .project-dialog {
+    width: calc(100% - 1rem);
+    max-height: calc(100dvh - 1rem);
+    padding: 5px;
+  }
+
+  .sheet-header,
+  .gallery,
+  .sheet-footer {
+    padding: 0.85rem;
+  }
+
+  .gallery-stage {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  .gallery-image {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .previous {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: end;
+  }
+
+  .next {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .sheet-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-dialog[open] {
+    animation: none;
+    }
+}
