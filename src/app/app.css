@@ -6,6 +6,10 @@
 
 }
 
+.view-container:focus {
+	outline: none;
+}
+
 /* Capa que contiene todos los efectos de película */
 .film-overlay {
 	filter: blur(0.5px) drop-shadow(0 0 0 #c9c7c7);
@@ -142,6 +146,7 @@
 }
 
 .iris {
+	visibility: hidden;
 	position: fixed;
 	inset: 0;
 	z-index: 45;
@@ -159,10 +164,14 @@
 }
 
 .iris.cerrando {
+	visibility: visible;
+	pointer-events: auto;
 	animation: iris-cerrar 0.8s ease-in forwards;
 }
 
 .iris.abriendo {
+	visibility: visible;
+	pointer-events: auto;
 	animation: iris-abrir 0.9s ease-out forwards;
 }
 

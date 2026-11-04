@@ -1,17 +1,27 @@
-<div class="film-overlay"></div> <!--Van fuera para evitar que esten arriba y se pueda interactuar con los demas elementos-->
-<div class="vignette"></div>
+<div class="film-overlay" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
 
 @if (introVisible()) {
-    <app-intro (salir)="iniciarTransicion()" />
+    <app-intro
+        [disabled]="irisFase() !== 'idle'"
+        (salir)="iniciarTransicion()"
+    />
 }
 
 <div class="iris"
+     aria-hidden="true"
      [class.cerrando]="irisFase() === 'cerrando'"
      [class.abriendo]="irisFase() === 'abriendo'"
-     (animationend)="onIrisFin()"></div>
+     (animationend)="onIrisFin($event)"></div>
 
-<div class="view-container">
+<main
+    #content
+    class="view-container"
+    aria-label="Portafolio de Reynaldo Rodríguez Polanco"
+    tabindex="-1"
+    [inert]="entradaBloqueada()"
+>
         <router-outlet />
-</div>
+</main>
 
 

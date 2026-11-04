@@ -1,1 +1,65 @@
-<p>contact works!</p>
+<section id="contacto" class="page-section contact-section" aria-labelledby="contact-title">
+    <header class="contact-heading">
+        <p class="section-eyebrow">El siguiente capítulo</p>
+        <h2 id="contact-title">Sigamos en contacto</h2>
+    </header>
+
+    <article class="postcard">
+        <div class="postcard-heading">
+            <span>Correspondencia</span>
+            <span aria-hidden="true">✦</span>
+            <span>Una idea puede empezar aquí</span>
+        </div>
+
+        <div class="postcard-body">
+            <div class="postcard-message">
+                <p class="postcard-kicker">¿Tienes un proyecto en mente?</p>
+                <h3>Hablemos de tu próxima idea.</h3>
+                <p>
+                    Si quieres conversar sobre un proyecto, una oportunidad profesional
+                    o mi trabajo, puedes escribirme. Me encantará conocer tu propuesta.
+                </p>
+                <p class="signature">Reynaldo Rodríguez Polanco</p>
+            </div>
+
+            <div class="postcard-address">
+                <div class="postmark" aria-hidden="true">
+                    <svg viewBox="0 0 48 36" fill="none">
+                        <rect x="2" y="2" width="44" height="32" rx="2" />
+                        <path d="M3 4 24 20 45 4M3 32 17 19M45 32 31 19" />
+                    </svg>
+                    <span>Correo web</span>
+                </div>
+
+                <p class="address-label">Para: Reynaldo</p>
+                <a class="email-address" [href]="emailLink">{{ email }}</a>
+
+                <div class="contact-actions">
+                    <a class="contact-button primary" [href]="emailLink">Escribirme</a>
+                    <button
+                        type="button"
+                        class="contact-button"
+                        [disabled]="copying()"
+                        (click)="copyEmail()"
+                    >
+                        {{ copying() ? 'Copiando…' : 'Copiar correo' }}
+                    </button>
+                </div>
+
+                <p class="contact-note">«Escribirme» abre tu aplicación de correo con el destinatario y el asunto preparados.</p>
+                <p class="copy-feedback" role="status" aria-atomic="true">{{ copyMessage() }}</p>
+
+                <a
+                    class="github-link"
+                    href="https://github.com/ReyRodriP"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    También puedes ver mi GitHub
+                    <span class="new-tab-note">(otra pestaña)</span>
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+    </article>
+</section>

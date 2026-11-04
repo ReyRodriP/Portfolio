@@ -7,6 +7,50 @@
     flex-direction: column;
 }
 
+/* Soft changes of tone and short ornamental rules separate the chapters. */
+.start > app-about,
+.start > app-projects,
+.start > app-contact {
+    position: relative;
+    display: block;
+}
+
+.start > app-about,
+.start > app-contact {
+    background: radial-gradient(ellipse at center, var(--bg-section), var(--bg-main) 75%);
+}
+
+.start > app-about::before,
+.start > app-projects::before,
+.start > app-contact::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    width: min(28rem, 70%);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    pointer-events: none;
+}
+
+.start > app-about::after,
+.start > app-projects::after,
+.start > app-contact::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--accent);
+    box-shadow: 0 0 0 6px var(--bg-main);
+    pointer-events: none;
+}
+
 .background-mask {
     mask-image: url('/img/circle.svg');
     mask-position: center;

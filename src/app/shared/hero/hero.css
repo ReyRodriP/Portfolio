@@ -79,7 +79,7 @@
     max-width: 100%;
 }
 
-.name-profile h2 {
+.name-profile h1 {
     margin: 0;
 
     font-size: clamp(1.4rem, 2.5vw, 2.2rem);
@@ -113,7 +113,7 @@
 }
 
 .skills::before {
-    content: "✦";
+    content: " ";
 
     color: var(--retro-red);
 
@@ -163,12 +163,16 @@
     gap: 4px;
 }
 
-.options button {
+.options button,
+.options a {
     position: relative;
+    display: block;
 
     width: 100%;
 
     padding: 6px 10px;
+    min-height: 44px;
+    text-decoration: none;
 
     border: none;
 
@@ -186,7 +190,8 @@
     cursor: pointer;
 }
 
-.options button::before {
+.options button::before,
+.options a::before {
     content: "►";
 
     position: absolute;
@@ -202,15 +207,32 @@
         transform 0.15s ease;
 }
 
-.options button:hover,
-.options button:focus-visible {
+.options button:hover:not(:disabled),
+.options button:focus-visible,
+.options a:hover,
+.options a:focus-visible {
     color: var(--retro-red);
 }
 
-.options button:hover::before,
-.options button:focus-visible::before {
+.options button:hover:not(:disabled)::before,
+.options button:focus-visible::before,
+.options a:hover::before,
+.options a:focus-visible::before {
     opacity: 1;
     transform: translateX(0);
+}
+
+.options a:focus-visible,
+.options button:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+}
+
+.options button:disabled {
+    color: var(--second-text);
+    cursor: default;
+    font-size: 0.9rem;
+    font-weight: 400;
 }
 
 .under-card {

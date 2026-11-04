@@ -5,7 +5,6 @@
     padding: 4rem 2rem;
     gap: 4rem;
     background: var(--bg-main);
-    border: 8px solid var(--text-main);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -296,7 +295,6 @@
     .projects-section {
         padding: 2.5rem 0.75rem;
         gap: 2.5rem;
-        border-width: 4px;
     }
 
     .film-reel,

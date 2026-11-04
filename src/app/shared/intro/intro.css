@@ -2,23 +2,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     justify-content: center;
+    gap: clamp(1rem, 3svh, 2rem);
+    padding: clamp(1.25rem, 4vw, 3rem);
+    padding-bottom: clamp(3rem, 12svh, 7rem);
+    text-align: center;
     background-color: var(--bg-main);
+    cursor: pointer;
 }
 
 .intro-content svg {
-    position: absolute;
-    width: min(90vw, 650px);
+    flex: 0 0 auto;
+    width: min(100%, 650px);
     height: auto;
-    top: 80px;
 }
 
 :host {
     position: fixed;
     inset: 0;
     z-index: 40;
+    overflow-y: auto;
 }
 
 path {
@@ -34,32 +39,26 @@ text {
 
 h1 {
     color: var(--text-main);
+    font-size: clamp(1.75rem, 6vw, 3.5rem);
 }
 
 h2 {
     text-align: center;
     color: #fff;
+    font-size: clamp(1rem, 3vw, 1.4rem);
 }
 
-#click {
-    margin-top: 8em;
-    display: inline-block;
-    animation: desvanecer 1.5s ease-in-out infinite alternate;
+.intro-content:focus-visible {
+    outline: 3px solid var(--light-paper);
+    outline-offset: -6px;
+}
+
+.intro-content[aria-disabled="true"] {
+    cursor: wait;
+}
+
+.intro-hint {
     color: var(--text-main);
-}
-
-@keyframes desvanecer {
-    0% {
-       opacity: 0;;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #click {
-        animation: none;
-    }
+    font-size: 0.85rem;
 }
 

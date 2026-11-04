@@ -1,5 +1,15 @@
-<div class="intro-content" (click)="irAlPortafolio()">
-    <svg viewBox="0 0 500 500">
+<section
+    #introScreen
+    class="intro-content"
+    role="button"
+    tabindex="0"
+    aria-label="Entrar al portafolio de Reynaldo Rodríguez Polanco"
+    aria-describedby="intro-hint"
+    [attr.aria-disabled]="disabled()"
+    (click)="irAlPortafolio()"
+    (keydown)="onKeydown($event)"
+>
+    <svg viewBox="0 0 500 175" aria-hidden="true" focusable="false">
         <path id="curve" d="M 50,150 Q 250,20 450,150"/>
         <text textLength="390" lengthAdjust="spacingAndGlyphs">
             <textPath href="#curve" startOffset="50%" text-anchor="middle">
@@ -12,5 +22,5 @@
     
     <h2>A CREATION BY <br> REYNALDO RODRÍGUEZ POLANCO</h2>
     
-    <p id="click">Clic para continuar</p>
-</div>
+    <p id="intro-hint" class="intro-hint">Haz clic en cualquier parte para continuar · Enter / Espacio</p>
+</section>
