@@ -3,6 +3,7 @@
 }
 
 .project-dialog {
+    filter: grayscale(var(--image-grayscale));
     width: min(1050px, calc(100% - 2rem));
     max-height: calc(100dvh - 2rem);
     margin: auto;

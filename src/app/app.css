@@ -3,6 +3,7 @@
 	width: 100%;
 	min-height: 100vh;
 	overflow: hidden;
+	filter: grayscale(var(--image-grayscale));
 
 }
 
@@ -186,6 +187,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+	.film-overlay::before,
+	.film-overlay::after {
+		animation: none;
+	}
+
 	.iris.cerrando,
 	.iris.abriendo {
 		animation-duration: 0.01s;

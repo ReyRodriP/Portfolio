@@ -1,5 +1,11 @@
-<div class="film-overlay" aria-hidden="true"></div>
-<div class="vignette" aria-hidden="true"></div>
+@if (visualPreferences.filmEffects()) {
+    <div class="film-overlay" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+}
+
+@if (irisFase() === 'idle') {
+    <app-visual-settings />
+}
 
 @if (introVisible()) {
     <app-intro

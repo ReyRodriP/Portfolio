@@ -117,7 +117,7 @@
     height: 90px;
     object-fit: contain;
 
-    filter: grayscale(var(--image-grayscale)) contrast(var(--image-contrast));
+    filter: contrast(var(--image-contrast));
 
     background: var(--light-paper);
     border: 2px solid var(--sec-ext-border);

@@ -1,0 +1,65 @@
+<button
+    #settingsTrigger
+    type="button"
+    class="settings-trigger"
+    aria-label="Abrir ajustes visuales"
+    title="Ajustes visuales"
+    aria-haspopup="dialog"
+    aria-controls="visual-settings-panel"
+    [attr.aria-expanded]="isOpen()"
+    (click)="open()"
+>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M5 3v18M12 3v18M19 3v18M2 8h6M9 16h6M16 7h6" />
+        <circle cx="5" cy="8" r="2" />
+        <circle cx="12" cy="16" r="2" />
+        <circle cx="19" cy="7" r="2" />
+    </svg>
+</button>
+
+<dialog
+    #settingsDialog
+    id="visual-settings-panel"
+    class="settings-dialog"
+    aria-labelledby="settings-title"
+    (cancel)="onCancel($event)"
+    (close)="onClosed()"
+    (click)="onBackdropClick($event)"
+>
+    <div class="settings-sheet">
+        <header class="settings-header">
+            <h2 id="settings-title">Ajustes de proyección</h2>
+            <button
+                type="button"
+                class="close-button"
+                aria-label="Cerrar ajustes visuales"
+                autofocus
+                (click)="close()"
+            ><span aria-hidden="true">×</span></button>
+        </header>
+
+        <div class="settings-body">
+            <label class="setting-row">
+                <span class="setting-title">Efectos de película</span>
+                <input
+                    #filmToggle
+                    type="checkbox"
+                    role="switch"
+                    [checked]="preferences.filmEffects()"
+                    (change)="preferences.setFilmEffects(filmToggle.checked)"
+                />
+            </label>
+
+            <label class="setting-row">
+                <span class="setting-title">Blanco y negro</span>
+                <input
+                    #monochromeToggle
+                    type="checkbox"
+                    role="switch"
+                    [checked]="preferences.monochrome()"
+                    (change)="preferences.setMonochrome(monochromeToggle.checked)"
+                />
+            </label>
+        </div>
+    </div>
+</dialog>

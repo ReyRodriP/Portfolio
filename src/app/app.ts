@@ -13,16 +13,19 @@ import {
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Intro } from './shared/intro/intro';
+import { VisualPreferences } from './core/services/visual-preferences';
+import { VisualSettings } from './shared/visual-settings/visual-settings';
 
 type IrisFase = 'idle' | 'cerrando' | 'abriendo';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Intro],
+  imports: [RouterOutlet, Intro, VisualSettings],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
+  readonly visualPreferences = inject(VisualPreferences);
   protected readonly title = signal('portfolio_web');
 
   public readonly introVisible = signal(true);
