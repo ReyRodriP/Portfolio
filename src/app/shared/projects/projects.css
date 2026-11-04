@@ -250,6 +250,15 @@
     padding: 0.5rem 1.25rem 0.75rem;
 }
 
+.card-body .project-status {
+    align-self: flex-start;
+}
+
+.card-body .project-technologies {
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
 .reel-hint {
     color: var(--second-text);
     font-size: 0.75rem;

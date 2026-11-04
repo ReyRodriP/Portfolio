@@ -140,7 +140,7 @@ button {
 .sheet-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 1.25rem;
   padding: 1rem 1.25rem;
 
@@ -148,9 +148,32 @@ button {
   border-top: 3px solid var(--text);
 }
 
-.sheet-footer p {
-  max-width: 65ch;
-  font: 0.95rem/1.5 var(--font-body);
+.project-information {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-top: 3px solid var(--text);
+  font: 0.95rem/1.6 var(--font-body);
+}
+
+.project-information > .project-status {
+  justify-self: start;
+}
+
+.project-story {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.project-story dt {
+  margin-bottom: 0.35rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.project-story dd {
+  color: var(--second-text);
 }
 
 .return-button {
@@ -203,6 +226,7 @@ button:focus-visible {
 
   .sheet-header,
   .gallery,
+  .project-information,
   .sheet-footer {
     padding: 0.85rem;
   }
@@ -232,6 +256,10 @@ button:focus-visible {
   .sheet-footer {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .project-story {
+    grid-template-columns: 1fr;
   }
 }
 

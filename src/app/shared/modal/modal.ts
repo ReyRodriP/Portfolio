@@ -1,16 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, AfterViewInit, ElementRef, OnDestroy, ViewChild, computed, inject, input, output, signal } from '@angular/core';
-
-export interface ProjectImage {
-  src: string;
-  alt: string;
-}
-
-export interface ModalProject {
-  title: string;
-  description: string;
-  images: ProjectImage[];
-}
+import type { ProjectDetails } from '../../core/models/project';
 
 @Component({
   selector: 'app-modal',
@@ -20,7 +10,7 @@ export interface ModalProject {
 })
 
 export class Modal implements AfterViewInit, OnDestroy {
-  readonly project = input.required<ModalProject>();
+  readonly project = input.required<ProjectDetails>();
   readonly closed = output<void>();
 
   readonly imageIndex = signal(0);

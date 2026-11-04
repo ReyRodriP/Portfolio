@@ -22,7 +22,7 @@
                 autofocus
                 (click)="closeModal()">
                 
-                <span aria-hidden="true">x</span>
+                <span aria-hidden="true">×</span>
             </button>
         </header>
 
@@ -60,15 +60,49 @@
                 </p>
             } @else {
                 <p class="empty-gallery">
-                    Este proyecto todavia no tiene capturas.
+                    Este proyecto todavía no tiene capturas.
                 </p>
             }
         </div>
-        <footer class="sheet-footer">
+        <section class="project-information" aria-label="Información del proyecto">
+            @if (project().status; as status) {
+                <span class="project-status">{{ status }}</span>
+            }
             <p id="project-modal-description">
                 {{ project().description }}
             </p>
 
+            @if (project().technologies; as technologies) {
+                <ul class="project-technologies" aria-label="Tecnologías utilizadas">
+                    @for (technology of technologies; track technology) {
+                        <li>{{ technology }}</li>
+                    }
+                </ul>
+            }
+
+            <dl class="project-story">
+                @if (project().context; as context) {
+                    <div>
+                        <dt>El reto</dt>
+                        <dd>{{ context }}</dd>
+                    </div>
+                }
+                @if (project().contribution; as contribution) {
+                    <div>
+                        <dt>Mi aportación</dt>
+                        <dd>{{ contribution }}</dd>
+                    </div>
+                }
+                @if (project().nextSteps; as nextSteps) {
+                    <div>
+                        <dt>Próximos pasos</dt>
+                        <dd>{{ nextSteps }}</dd>
+                    </div>
+                }
+            </dl>
+        </section>
+
+        <footer class="sheet-footer">
             <button 
                 type="button"
                 class="return-button"

@@ -1,258 +1,109 @@
-<section class="projects-section">
-    <div class="projector-overlay" aria-hidden="true"></div>
-    
-    <!-- Carrete 1: Proyectos importante (3) -->
-    
+<section class="projects-section" aria-label="Proyectos">
     <div class="film-reel">
         <h2 class="reel-title">Proyectos destacados</h2>
-
         <div class="perforaciones top" aria-hidden="true"></div>
 
-        <div class="reel-controls" role="group" aria-label="Navegar proyectos destacados">
-            <button
-                type="button"
-                class="reel-button"
+        <div class="reel-controls" role="group" aria-label="Navegar por los proyectos destacados">
+            <button type="button" class="reel-button"
                 aria-label="Desplazar proyectos destacados hacia atrás"
-                aria-controls="featured-projects"
-                (click)="scrollReel(featuredViewport, -1)">
+                aria-controls="featured-projects" (click)="scrollReel(featuredViewport, -1)">
                 <span aria-hidden="true">◀</span>
             </button>
-
             <span class="reel-hint">Explora el carrete</span>
-
-            <button
-                type="button"
-                class="reel-button"
+            <button type="button" class="reel-button"
                 aria-label="Desplazar proyectos destacados hacia delante"
-                aria-controls="featured-projects"
-                (click)="scrollReel(featuredViewport, 1)">
+                aria-controls="featured-projects" (click)="scrollReel(featuredViewport, 1)">
                 <span aria-hidden="true">▶</span>
             </button>
         </div>
 
-        <div
-            #featuredViewport
-            id="featured-projects"
-            class="reel-viewport"
-            role="region"
-            aria-label="Proyectos destacados"
-            tabindex="0">
+        <div #featuredViewport id="featured-projects" class="reel-viewport"
+            role="region" aria-label="Proyectos destacados" tabindex="0">
             <div class="reel-track">
-
-                <article class="project-card" data-scene="01">
-                    <div class="card-image">
-                        <img src="img/UASD-Mescyt/Captura de pantalla 2026-07-31 222758.png" alt="Imagen de mi proyecto para la Evaluacion Quinquenal">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Evaluacion Quinquenal</h3>
-                        <p>Proyecto institucional para facilitar la evaluacion Quinquenal del Mescyt a las instituciones de nivel superior</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="#" class="btn btn-repo">Repositorio</a>
-                        <button type="button" class="btn btn-demo" aria-haspopup="dialog" (click)="openProject(projectGalleries[0])">Detalles</button>
-                    </div>
-                </article>
-
-                <article class="project-card" data-scene="02">
-                    <div class="card-image">
-                        <img src="img/UASD-Pensum/Captura de pantalla 2026-10-21 202436.png" alt="Imagen de mi proyecto para la manejar pensum">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Mi Pensum UASD</h3>
-                        <p>Proyecto dirigido a los estudiantes que quieran seguir el avance de sus pensum y obtener actualizacion de su indice actual</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="#" class="btn btn-repo">Repositorio</a>
-                        <button type="button" class="btn btn-demo" aria-haspopup="dialog" (click)="openProject(projectGalleries[1])">Detalles</button>
-                    </div>
-                </article>
-
-                <article class="project-card" data-scene="03">
-                    <div class="card-image">
-                        <img src="img/small/CapturaExtra.png" alt="Imagen de mi proyecto recopilatorio de 100 proyectos Frontend">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Reto 100 dias</h3>
-                        <p>Proyecto recopilatorio de 100 proyectos Frontend</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="#" class="btn btn-repo">Repositorio</a>
-                        <button type="button" class="btn btn-demo" aria-haspopup="dialog" (click)="openProject(projectGalleries[2])">Detalles</button>
-                    </div>
-                </article>
-
+                @for (project of featuredProjects; track project.id; let index = $index) {
+                    <article class="project-card" [attr.data-scene]="'0' + (index + 1)">
+                        <div class="card-image">
+                            <img [src]="project.images[0].src" [alt]="project.images[0].alt" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            @if (project.status) {
+                                <span class="project-status">{{ project.status }}</span>
+                            }
+                            <h3>{{ project.title }}</h3>
+                            <p>{{ project.summary }}</p>
+                            <ul class="project-technologies" aria-label="Tecnologías utilizadas">
+                                @for (technology of project.technologies; track technology) {
+                                    <li>{{ technology }}</li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="card-actions">
+                            <a [href]="project.repositoryUrl" class="btn btn-repo"
+                                target="_blank" rel="noopener noreferrer"
+                                [attr.aria-label]="'Ver el repositorio de ' + project.title + ' (otra pestaña)'">
+                                Repositorio
+                            </a>
+                            <button type="button" class="btn btn-demo" aria-haspopup="dialog"
+                                [attr.aria-label]="'Ver detalles de ' + project.title"
+                                (click)="openProject(project)">Detalles</button>
+                        </div>
+                    </article>
+                }
             </div>
         </div>
 
         <div class="perforaciones bottom" aria-hidden="true"></div>
     </div>
 
-    <!-- Carrete 2: Proyectos basicos -->
     <div class="film-reel">
         <h2 class="reel-title">Proyectos de práctica</h2>
-
         <div class="perforaciones top" aria-hidden="true"></div>
 
-        <div class="reel-controls" role="group" aria-label="Navegar proyectos de práctica">
-            <button
-                type="button"
-                class="reel-button"
+        <div class="reel-controls" role="group" aria-label="Navegar por los proyectos de práctica">
+            <button type="button" class="reel-button"
                 aria-label="Desplazar proyectos de práctica hacia atrás"
-                aria-controls="practice-projects"
-                (click)="scrollReel(practiceViewport, -1)">
+                aria-controls="practice-projects" (click)="scrollReel(practiceViewport, -1)">
                 <span aria-hidden="true">◀</span>
             </button>
-
             <span class="reel-hint">Explora el carrete</span>
-
-            <button
-                type="button"
-                class="reel-button"
+            <button type="button" class="reel-button"
                 aria-label="Desplazar proyectos de práctica hacia delante"
-                aria-controls="practice-projects"
-                (click)="scrollReel(practiceViewport, 1)">
+                aria-controls="practice-projects" (click)="scrollReel(practiceViewport, 1)">
                 <span aria-hidden="true">▶</span>
             </button>
         </div>
 
-        <div
-            #practiceViewport
-            id="practice-projects"
-            class="reel-viewport"
-            role="region"
-            aria-label="Proyectos de práctica"
-            tabindex="0">
+        <div #practiceViewport id="practice-projects" class="reel-viewport"
+            role="region" aria-label="Proyectos de práctica" tabindex="0">
             <div class="reel-track">
-
-                <article class="project-card" data-scene="01">
-                    <div class="card-image">
-                        <img src="img/small/Captura1.png" alt="Imagen de mi proyecto de citas motivacionales">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Citas</h3>
-                        <p>Proyecto pequeño que muestra diferentes frases motivacionales con cada carga. La finalidad de este proyecto fue practicar acerca del consumo de APIs.</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://github.com/ReyRodriP/Citas.git" class="btn btn-repo" target="_blank">Repositorio</a>
-                        <a href="https://reyrodrip.github.io/Citas/" class="btn btn-demo" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-scene="02">
-                    <div class="card-image">
-                        <img src="img/small/Captura2.png" alt="Imagen de mi proyecto de colores aleatorios">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Colores aleatorios</h3>
-                        <p>Proyecto que cambia el color del fondo por uno aleatorio al presionar el boton.</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://github.com/ReyRodriP/Colores-aleatorios.git" class="btn btn-repo" target="_blank">Repositorio</a>
-                        <a href="https://reyrodrip.github.io/Colores-aleatorios/" class="btn btn-demo" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-scene="03">
-                    <div class="card-image">
-                        <img src="img/small/Captura3.png" alt="Imagen de mi proyecto de colores RGB">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Colores RGB</h3>
-                        <p>Proyecto en el que contamos con 3 barras para manejar la escala de colores RGB con el fin de cambiar el fondo de la vista. Un proyecto basico que utiliza las bases en que se asignan los colores RGB.</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://github.com/ReyRodriP/Colores-RGB.git" class="btn btn-repo" target="_blank">Repositorio</a>
-                        <a href="https://reyrodrip.github.io/Colores-RGB/" class="btn btn-demo" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-scene="04">
-                    <div class="card-image">
-                        <img src="img/small/Captura4.png" alt="Imagen de mi proyecto declaratorio">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Declaracion</h3>
-                        <p>Uno de mis primeros proyectos interactivos. Hecho para ser usado el dia de San Valentin y no obtener un no como respuesta</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://github.com/ReyRodriP/Declaracion.git" class="btn btn-repo" target="_blank">Repositorio</a>
-                        <a href="https://reyrodrip.github.io/Declaracion/" class="btn btn-demo" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-scene="05">
-                    <div class="card-image">
-                        <img src="img/small/Captura5.png" alt="Imagen de mi proyecto notificaciones">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Toast</h3>
-                        <p>Proyecto de notificaciones tipo toast para mostrar mensajes emergentes. Originalmente cree este proyecto para no tener que depender de toasts externos y mejorar el funcionamineto de los mios propios ademas de personalizarlos a mi gusto.</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://github.com/ReyRodriP/Notificaciones.git" class="btn btn-repo" target="_blank">Repositorio</a>
-                        <a href="https://reyrodrip.github.io/Notificaciones/" class="btn btn-demo" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-scene="06">
-                    <div class="card-image">
-                        <img src="img/small/Captura6.png" alt="Imagen de mi proyecto notificaciones">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Cronometro</h3>
-                        <p>Cronometro basico interactivo con funcionalidad de pausar, reanudar y reiniciar.</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://github.com/ReyRodriP/Cronometro.git" class="btn btn-repo" target="_blank">Repositorio</a>
-                        <a href="https://reyrodrip.github.io/Cronometro/" class="btn btn-demo" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-scene="07">
-                    <div class="card-image">
-                        <img src="img/small/Captura7.png" alt="Imagen de mi proyecto de gestion de tareas">
-                    </div>
-
-                    <div class="card-body">
-                        <h3>Gestor de tareas</h3>
-                        <p>Gestor de tareas que permite almacenar tareas ingresas por el usuario en una lista para ser marcadas como hechas o ser eliminadas del listado</p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://github.com/ReyRodriP/Gestor-de-tareas.git" class="btn btn-repo" target="_blank">Repositorio</a>
-                        <a href="https://reyrodrip.github.io/Gestor-de-tareas/" class="btn btn-demo" target="_blank">Ver proyecto</a>
-                    </div>
-                </article>
-
+                @for (project of practiceProjects; track project.id; let index = $index) {
+                    <article class="project-card" [attr.data-scene]="'0' + (index + 1)">
+                        <div class="card-image">
+                            <img [src]="project.image.src" [alt]="project.image.alt" loading="lazy">
+                        </div>
+                        <div class="card-body">
+                            <h3>{{ project.title }}</h3>
+                            <p>{{ project.description }}</p>
+                        </div>
+                        <div class="card-actions">
+                            <a [href]="project.repositoryUrl" class="btn btn-repo"
+                                target="_blank" rel="noopener noreferrer"
+                                [attr.aria-label]="'Ver el repositorio de ' + project.title + ' (otra pestaña)'">
+                                Repositorio
+                            </a>
+                            <a [href]="project.demoUrl" class="btn btn-demo"
+                                target="_blank" rel="noopener noreferrer"
+                                [attr.aria-label]="'Ver ' + project.title + ' (otra pestaña)'">Ver proyecto</a>
+                        </div>
+                    </article>
+                }
             </div>
         </div>
 
         <div class="perforaciones bottom" aria-hidden="true"></div>
     </div>
-
 </section>
 
 @if (selectedProject; as project) {
-  <app-modal
-    [project]="project"
-    (closed)="closeProject()"
-  />
+    <app-modal [project]="project" (closed)="closeProject()" />
 }

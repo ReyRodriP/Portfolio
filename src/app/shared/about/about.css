@@ -88,6 +88,10 @@
     line-height: 1.6;
 }
 
+.bio-content p + p {
+    margin-top: 0.9rem;
+}
+
 .tech-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
