@@ -322,8 +322,18 @@
         margin: 2rem 0.75rem 0.5rem;
     }
 
+    .reel-viewport {
+        --mobile-card-width: min(280px, 75vw);
+        container-type: inline-size;
+    }
+
+    .reel-track {
+        padding-inline: calc((100cqw - var(--mobile-card-width)) / 2);
+    }
+
     .project-card {
-        width: min(280px, 75vw);
+        width: var(--mobile-card-width);
+        scroll-snap-align: center;
     }
 
     .project-card:nth-child(odd),

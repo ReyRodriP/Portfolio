@@ -52,7 +52,7 @@
 }
 
 .background-mask {
-    mask-image: url('/img/circle.svg');
+    mask-image: url('../../../../public/img/circle.svg');
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 50px;
