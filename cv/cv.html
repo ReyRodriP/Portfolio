@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV | Reynaldo Rodríguez Polanco</title>
+  <style>
+    @page { size: A4; margin: 16mm 18mm; }
+    * { box-sizing: border-box; }
+    body {
+      max-width: 174mm;
+      margin: 0 auto;
+      color: #202a33;
+      background: #fff;
+      font: 10pt/1.38 Arial, Helvetica, sans-serif;
+    }
+    header { padding-bottom: 11px; border-bottom: 2px solid #234d5c; }
+    h1 { margin: 0 0 3px; font-size: 20pt; line-height: 1.1; color: #153e50; }
+    .role { margin: 0 0 7px; font-size: 11pt; font-weight: bold; }
+    .contact { margin: 0; font-size: 9pt; line-height: 1.55; }
+    .contact span { white-space: nowrap; }
+    a { color: #164f69; text-decoration: underline; }
+    h2 {
+      margin: 13px 0 5px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid #b9c8cc;
+      color: #153e50;
+      font-size: 10.5pt;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    p { margin: 0 0 5px; }
+    .entry { margin: 0 0 9px; break-inside: avoid; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry-title { margin: 0; font-weight: bold; }
+    .entry-meta { margin: 1px 0 4px; color: #44535b; font-size: 9pt; }
+    ul { margin: 3px 0 0; padding-left: 18px; }
+    li { margin-bottom: 2px; }
+    .skills p { margin-bottom: 3px; }
+    @media screen {
+      body { padding: 18px; box-shadow: 0 0 16px #b9c8cc; }
+      html { background: #eef1f2; padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reynaldo Rodríguez Polanco</h1>
+    <p class="role">Desarrollador Frontend | Angular · TypeScript</p>
+    <p class="contact">
+      <span>Santo Domingo Este, República Dominicana</span> ·
+      <span>829-233-1060</span> ·
+      <a href="mailto:reynaldorodriguez802@gmail.com">reynaldorodriguez802@gmail.com</a><br>
+      <a href="https://reyrodrip.github.io/Portfolio/">reyrodrip.github.io/Portfolio</a> ·
+      <a href="https://github.com/ReyRodriP">github.com/ReyRodriP</a>
+    </p>
+  </header>
+
+  <main>
+    <section aria-labelledby="perfil">
+      <h2 id="perfil">Perfil profesional</h2>
+      <p>Licenciado en Informática y desarrollador web enfocado en frontend. Desarrollo interfaces con Angular y TypeScript y también he trabajado en backend y bases de datos. Lideré un equipo de tres personas en la creación de una plataforma de gestión documental como proyecto monográfico, actualmente bajo evaluación para su posible adopción en la UASD.</p>
+    </section>
+
+    <section aria-labelledby="proyectos">
+      <h2 id="proyectos">Proyectos destacados</h2>
+      <div class="entry">
+        <p class="entry-title">Evaluación Quinquenal UASD–MESCyT | Proyecto monográfico</p>
+        <p class="entry-meta">Angular · Django · PostgreSQL · <a href="https://github.com/ReyRodriP/Evaluaci-n-Quinquenal-UASDMESCyT">Repositorio</a></p>
+        <ul>
+          <li>Lideré un equipo de tres integrantes y coordiné correcciones y mejoras de la plataforma.</li>
+          <li>Desarrollé gran parte de la aplicación, trabajando tanto en el frontend como en el backend.</li>
+          <li>La plataforma centraliza la carga, el seguimiento y la evaluación de evidencias documentales. El Departamento de Calidad de la UASD está evaluando su posible implementación.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <p class="entry-title">Mi Pensum UASD | En desarrollo</p>
+        <p class="entry-meta">JavaScript · Express · Node.js · <a href="https://github.com/ReyRodriP/Plan-de-estudio">Repositorio</a></p>
+        <p>Desarrollo una aplicación para consultar asignaturas y organizar el avance académico de estudiantes, con interfaz en JavaScript y servidor con Express sobre Node.js.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="experiencia">
+      <h2 id="experiencia">Experiencia</h2>
+      <div class="entry">
+        <p class="entry-title">Programador pasante | Dirección General de Tecnología de la Información, UASD</p>
+        <p class="entry-meta">Junio de 2024 – enero de 2025</p>
+        <p>Colaboré con el equipo de desarrollo en documentación de proyectos y tareas técnicas de apoyo, mientras aprendía sus procesos y herramientas de trabajo.</p>
+      </div>
+      <div class="entry">
+        <p class="entry-title">Colaborador / BET | Escuela de Ciencias Geográficas, UASD</p>
+        <p class="entry-meta">2022 – 2026</p>
+        <p>Brindé apoyo tecnológico y administrativo, gestioné documentación institucional y colaboré en la elaboración de materiales gráficos.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="formacion">
+      <h2 id="formacion">Formación</h2>
+      <p><strong>Licenciatura en Informática</strong> | Universidad Autónoma de Santo Domingo (UASD), 2026</p>
+    </section>
+
+    <section class="skills" aria-labelledby="habilidades">
+      <h2 id="habilidades">Habilidades e idiomas</h2>
+      <p><strong>Frontend:</strong> Angular, TypeScript, JavaScript, HTML, CSS.</p>
+      <p><strong>Backend:</strong> Django, Python, Node.js, Express. <strong>Bases de datos:</strong> PostgreSQL, MySQL, SQL Server.</p>
+      <p><strong>Idiomas:</strong> español nativo; inglés intermedio.</p>
+    </section>
+  </main>
+</body>
+</html>
