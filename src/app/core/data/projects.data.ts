@@ -80,9 +80,13 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     repositoryUrl: 'https://github.com/ReyRodriP/Reto-Frontend-1-100.git',
     images: [
       {
-        src: 'img/small/CapturaExtra.png',
+        src: 'img/Reto100/Captura1.png',
         alt: 'Vista de la colección de proyectos frontend del Reto de 100 días',
       },
+      {
+        src: 'img/Reto100/Captura2.png',
+        alt: 'Vista de la colección de proyectos frontend del Reto de 100 días',
+      }
     ],
   },
 ];
